@@ -1,0 +1,16 @@
+[
+    {
+        "uri": "/comments/3",
+        "method": "GET",
+        "headers": {
+            "User-Agent": "Request-Promise"
+        }
+    },
+    {
+        "uri": "/comments/4",
+        "method": "GET",
+        "headers": {
+            "User-Agent": "Request-Promise"
+        }
+    }
+]
