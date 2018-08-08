@@ -20,14 +20,5 @@ describe('Positive Comment Tests', () => {
         it('Validate response body of comment ' + id, () => {
             expect(validate(response, schema)).to.eql(true);
         });
-
-        /* it('Verifying Comment email with id ' + id, () => {
-            expect(response.email).to.match(/\w+@\w+.\w{1,5}/);
-        });
-
-        it('Verifying Comment body with id ' + id, () => {
-            expect(response.body).to.be.a('string');
-        });*/
     });
-
 });
