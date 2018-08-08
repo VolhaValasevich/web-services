@@ -5,6 +5,7 @@ const getComment = require('../data/comments/PostPositiveComments');
 const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
 const schema = require("../data/comments/commentSchema");
+const codes = require("../data/statusCodes");
 
 describe('POST Comment Tests', () => {
 
@@ -17,12 +18,16 @@ describe('POST Comment Tests', () => {
             response = await sendRequest(data);
         });
 
+        it("Check response code of comment" + id, () => {
+            expect(response.statusCode).to.eql(codes.created);
+        });
+
         it('Validate response body of comment ' + id, () => {
-            expect(validate(response, schema)).to.eql(true);
+            expect(validate(response.body, schema)).to.eql(true);
         });
 
         it("Check the email of comment " + id, () => {
-            expect(response.email).to.match(/\w+@\w+.\w{1,5}/);
+            expect(response.body.email).to.match(/\w+@\w+.\w{1,5}/);
         });
     });
 });
