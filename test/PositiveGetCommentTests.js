@@ -25,9 +25,5 @@ describe('GET Comment Tests', () => {
         it('Validate response body of comment ' + id, () => {
             expect(validate(response.body, schema)).to.eql(true);
         });
-
-        it("Check the email of comment " + id, () => {
-            expect(response.body.email).to.match(/\w+@\w+.\w{1,5}/);
-        });
     });
 });

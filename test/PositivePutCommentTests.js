@@ -27,12 +27,8 @@ describe('PUT Comment Tests', () => {
         });
 
         it("Compare recieved data with sent data in comment " + id, () => {
-            data.body.id = id; // comment's id adjusts automatically
+            data.body.id = id; // id adjusts automatically
             expect(response.body).to.eql(data.body);
-        });
-
-        it("Check the email of comment " + id, () => {
-            expect(response.body.email).to.match(/\w+@\w+.\w{1,5}/);
         });
     });
 });

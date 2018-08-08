@@ -12,7 +12,8 @@
             "type": "string"
         },
         "email": {
-            "type": "string"
+            "type": "string",
+            "pattern": "\\w+@\\w+.\\w{1,5}"
         },
         "body": {
             "type": "string"

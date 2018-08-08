@@ -29,9 +29,5 @@ describe('POST Comment Tests', () => {
         it("Compare recieved data with sent data in comment " + id, () => {
             expect(response.body).to.eql(data.body);
         });
-
-        it("Check the email of comment " + id, () => {
-            expect(response.body.email).to.match(/\w+@\w+.\w{1,5}/);
-        });
     });
 });
