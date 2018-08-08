@@ -2,13 +2,16 @@
     "id": "/Comment",
     "type": "object",
     "properties": {
-        "userId": {
+        "postId": {
             "type": "number"
         },
         "id": {
             "type": "number"
         },
-        "title": {
+        "name": {
+            "type": "string"
+        },
+        "email": {
             "type": "string"
         },
         "body": {
@@ -16,6 +19,6 @@
         }
     },
     "required": [
-        "userID", "id", "title", "body"
+        "postId", "id", "name", "email", "body"
     ]
 }

@@ -3,6 +3,8 @@ const expect = chai.expect;
 const sendRequest = require('../lib/sendRequest');
 const getComment = require('../data/positiveComments');
 const env = require('../endpoint/test');
+const validate = require("../lib/validateSchema.js");
+const schema = require("../data/commentSchema");
 
 describe('Positive Comment Tests', () => {
 
@@ -15,17 +17,17 @@ describe('Positive Comment Tests', () => {
             response = await sendRequest(data);
         });
 
-        it('Verifying Comment id ' + id, () => {
-            expect(response.id).to.eql(id);
+        it('Validate response body of comment ' + id, () => {
+            expect(validate(response, schema)).to.eql(true);
         });
 
-        it('Verifying Comment email with id ' + id, () => {
+        /* it('Verifying Comment email with id ' + id, () => {
             expect(response.email).to.match(/\w+@\w+.\w{1,5}/);
         });
 
         it('Verifying Comment body with id ' + id, () => {
             expect(response.body).to.be.a('string');
-        });
+        });*/
     });
 
 });
