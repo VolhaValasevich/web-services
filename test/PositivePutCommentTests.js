@@ -1,17 +1,17 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sendRequest = require('../lib/sendRequest');
-const getComment = require('../data/comments/PostPositiveComments');
+const getComment = require('../data/comments/PutPositiveComments');
 const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
 const schema = require("../data/comments/commentSchema");
 const codes = require("../data/statusCodes");
 
-describe('POST Comment Tests', () => {
+describe('PUT Comment Tests', () => {
 
     getComment.map((data) => {
         let response;
-        let id = data.body.id;
+        let id = parseInt(data.uri.split('/')[2], 10);
 
         before(async () => {
             data.uri = env.uri + data.uri;
@@ -19,7 +19,7 @@ describe('POST Comment Tests', () => {
         });
 
         it("Check response code of comment " + id, () => {
-            expect(response.statusCode).to.eql(codes.created);
+            expect(response.statusCode).to.eql(codes.ok);
         });
 
         it('Validate response body of comment ' + id, () => {
@@ -27,6 +27,7 @@ describe('POST Comment Tests', () => {
         });
 
         it("Compare recieved data with sent data in comment " + id, () => {
+            data.body.id = id; // comment's id adjusts automatically
             expect(response.body).to.eql(data.body);
         });
 
