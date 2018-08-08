@@ -1,4 +1,4 @@
-const chai = require('chai');
+/* const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
 const expect = chai.expect;
 const sendRequest = require('../lib/sendRequest');
@@ -11,7 +11,6 @@ chai.use(chaiAsPromised);
 describe('Negative Comment Tests', () => {
 
     getComment.map((data) => {
-        let response;
         let id = parseInt(data.uri.split('/')[2]);
 
         before(async () => {
@@ -23,4 +22,4 @@ describe('Negative Comment Tests', () => {
         });
     })
 
-});
+});*/

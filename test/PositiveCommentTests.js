@@ -8,7 +8,7 @@ describe('Positive Comment Tests', () => {
 
     getComment.map((data) => {
         let response;
-        let id = parseInt(data.uri.split('/')[2]);
+        let id = parseInt(data.uri.split('/')[2], 10);
 
         before(async () => {
             data.uri = env.uri + data.uri;
@@ -26,6 +26,6 @@ describe('Positive Comment Tests', () => {
         it('Verifying Comment body with id ' + id, () => {
             expect(response.body).to.be.a('string');
         });
-    })
+    });
 
 });
