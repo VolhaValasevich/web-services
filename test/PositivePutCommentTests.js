@@ -1,34 +1,37 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sendRequest = require('../lib/sendRequest');
-const getComment = require('../data/comments/PutPositiveComments');
 const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
-const schema = require("../data/comments/commentSchema");
 const codes = require("../data/statusCodes");
+const sections = require("../data/sections");
 
-describe('PUT Comment Tests', () => {
+describe('PUT Tests', () => {
+    sections.map((section) => {
+        const requests = require(`../data/${section.name}/PutPositive${section.filename}`);
+        const schema = require(`../data/${section.name}/schema${section.filename}`);
 
-    getComment.map((data) => {
-        let response;
-        let id = parseInt(data.uri.split('/')[2], 10);
+        requests.map((data) => {
+            let response;
+            let id = parseInt(data.uri.split('/')[2], 10);
 
-        before(async () => {
-            data.uri = env.uri + data.uri;
-            response = await sendRequest(data);
-        });
+            before(async () => {
+                data.uri = env.uri + data.uri;
+                response = await sendRequest(data);
+            });
 
-        it("Check response code of comment " + id, () => {
-            expect(response.statusCode).to.eql(codes.ok);
-        });
+            it(`Check response code of ${section.singular} ` + id, () => {
+                expect(response.statusCode).to.eql(codes.ok);
+            });
 
-        it('Validate response body of comment ' + id, () => {
-            expect(validate(response.body, schema)).to.eql(true);
-        });
+            it(`Validate response body of ${section.singular} ` + id, () => {
+                expect(validate(response.body, schema)).to.eql(true);
+            });
 
-        it("Compare recieved data with sent data in comment " + id, () => {
-            data.body.id = id; // id adjusts automatically
-            expect(response.body).to.eql(data.body);
+            it(`Compare recieved data with sent data in ${section.singular} ` + id, () => {
+                data.body.id = id; // id adjusts automatically
+                expect(response.body).to.eql(data.body);
+            });
         });
     });
 });

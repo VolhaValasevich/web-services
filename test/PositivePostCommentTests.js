@@ -1,33 +1,37 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sendRequest = require('../lib/sendRequest');
-const getComment = require('../data/comments/PostPositiveComments');
 const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
-const schema = require("../data/comments/commentSchema");
 const codes = require("../data/statusCodes");
+const sections = require("../data/sections");
 
-describe('POST Comment Tests', () => {
+describe('POST Tests', () => {
 
-    getComment.map((data) => {
-        let response;
-        let id = data.body.id;
+    sections.map((section) => {
+        const requests = require(`../data/${section.name}/PostPositive${section.filename}`);
+        const schema = require(`../data/${section.name}/schema${section.filename}`);
 
-        before(async () => {
-            data.uri = env.uri + data.uri;
-            response = await sendRequest(data);
-        });
+        requests.map((data) => {
+            let response;
+            let id = data.body.id;
 
-        it("Check response code of comment " + id, () => {
-            expect(response.statusCode).to.eql(codes.created);
-        });
+            before(async () => {
+                data.uri = env.uri + data.uri;
+                response = await sendRequest(data);
+            });
 
-        it('Validate response body of comment ' + id, () => {
-            expect(validate(response.body, schema)).to.eql(true);
-        });
+            it(`Check response code of ${section.singular} ` + id, () => {
+                expect(response.statusCode).to.eql(codes.created);
+            });
 
-        it("Compare recieved data with sent data in comment " + id, () => {
-            expect(response.body).to.eql(data.body);
+            it(`Validate response body of ${section.singular} ` + id, () => {
+                expect(validate(response.body, schema)).to.eql(true);
+            });
+
+            it(`Compare recieved data with sent data in ${section.singular} ` + id, () => {
+                expect(response.body).to.eql(data.body);
+            });
         });
     });
 });

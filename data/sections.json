@@ -1,0 +1,12 @@
+[
+    {
+        "name": "comments",
+        "filename": "Comments",
+        "singular": "comment"
+    },
+    {
+        "name": "posts",
+        "filename": "Posts",
+        "singular": "post"
+    }
+]
