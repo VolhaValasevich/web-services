@@ -1,11 +1,10 @@
 const chai = require('chai');
 const expect = chai.expect;
 const sendRequest = require('../lib/sendRequest');
-const getComment = require('../data/getComment');
+const getComment = require('../data/positiveComments');
 const env = require('../endpoint/test');
-const fs = require('fs');
 
-describe('Get Comment by id', () => {
+describe('Positive Comment Tests', () => {
 
     getComment.map((data) => {
         let response;
