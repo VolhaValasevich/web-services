@@ -15,7 +15,7 @@ describe(method + ' Tests', () => {
 
         testData.map((data) => {
             let response;
-            // const id = data.id;
+            const id = data.id;
 
             before(async () => {
                 data.id *= ID_MULTIPLIER; // POST body data must have unique id
@@ -27,15 +27,15 @@ describe(method + ' Tests', () => {
                 data.id /= ID_MULTIPLIER;
             });
 
-            it(`Check response code of ${resource.singular} ` + data.id, () => {
+            it(`Check response code of ${resource.singular} ` + id, () => {
                 expect(response.statusCode).to.eql(codes.created);
             });
 
-            it(`Validate response body of ${resource.singular} ` + data.id, () => {
+            it(`Validate response body of ${resource.singular} ` + id, () => {
                 expect(validate(response.body, schema)).to.eql(true);
             });
 
-            it(`Compare recieved data with sent data in ${resource.singular} ` + data.id, () => {
+            it(`Compare recieved data with sent data in ${resource.singular} ` + id, () => {
                 expect(response.body).to.eql(data);
             });
         });
