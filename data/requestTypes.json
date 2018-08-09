@@ -1,0 +1,22 @@
+[
+    {
+        "type": "Get",
+        "bodyRequired": false,
+        "codeSuccess": 200
+    },
+    {
+        "type": "Put",
+        "bodyRequired": true,
+        "codeSuccess": 200
+    },
+    {
+        "type": "Post",
+        "bodyRequired": true,
+        "codeSuccess": 201
+    },
+    {
+        "type": "Delete",
+        "bodyRequired": false,
+        "codeSuccess": 200
+    }
+]
