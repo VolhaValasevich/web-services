@@ -16,7 +16,7 @@
     "eslint": "^5.3.0"
   },
   "scripts": {
-    "test": "node ./node_modules/mocha/bin/mocha",
+    "test": "node ./node_modules/mocha/bin/mocha --reporter ./lib/mochaReporter.js",
     "lint": "node ./node_modules/eslint/bin/eslint.js"
   },
   "repository": {
