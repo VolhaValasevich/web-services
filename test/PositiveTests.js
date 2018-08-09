@@ -43,7 +43,7 @@ requestTypes.map((request) => { // runs a separate describe for each type of req
                     }
                 });
 
-                if (request.bodyRequired) {
+                if (request.bodyIsRequired) {
                     it(`Compare recieved data with sent data in ${resource.singular} ` + id, () => {
                         expect(response.body).to.eql(data.body);
                     });
