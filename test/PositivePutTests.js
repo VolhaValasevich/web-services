@@ -5,32 +5,32 @@ const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
 const codes = require("../data/statusCodes");
 const sections = require("../data/sections");
+const method = 'PUT';
 
-describe('PUT Tests', () => {
-    sections.map((section) => {
-        const requests = require(`../data/${section.name}/PutPositive${section.filename}`);
-        const schema = require(`../data/${section.name}/schema${section.filename}`);
+describe(method + ' Tests', () => {
+    sections.map((resource) => {
+        const testData = require(`../data/${resource.name}/Positive${resource.filename}`);
+        const schema = require(`../data/${resource.name}/schema${resource.filename}`);
 
-        requests.map((data) => {
+        testData.forEach((dataPut) => {
             let response;
-            let id = parseInt(data.uri.split('/')[2], 10);
+            const id = dataPut.id;
 
             before(async () => {
-                data.uri = env.uri + data.uri;
-                response = await sendRequest(data);
+                let uri = `${env.uri}/${resource.name}/${id}`;
+                response = await sendRequest(uri, method, dataPut);
             });
 
-            it(`Check response code of ${section.singular} ` + id, () => {
+            it(`Check response code of ${resource.singular} ` + id, () => {
                 expect(response.statusCode).to.eql(codes.ok);
             });
 
-            it(`Validate response body of ${section.singular} ` + id, () => {
+            it(`Validate response body of ${resource.singular} ` + id, () => {
                 expect(validate(response.body, schema)).to.eql(true);
             });
 
-            it(`Compare recieved data with sent data in ${section.singular} ` + id, () => {
-                data.body.id = id; // id adjusts automatically
-                expect(response.body).to.eql(data.body);
+            it(`Compare recieved data with sent data in ${resource.singular} ` + id, () => {
+                expect(response.body).to.eql(dataPut);
             });
         });
     });

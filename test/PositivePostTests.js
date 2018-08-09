@@ -5,32 +5,38 @@ const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
 const codes = require("../data/statusCodes");
 const sections = require("../data/sections");
+const method = 'POST';
+const ID_MULTIPLIER = 5001; // the biggest section "Photos" has 5000 entries
 
-describe('POST Tests', () => {
+describe(method + ' Tests', () => {
+    sections.map((resource) => {
+        const testData = require(`../data/${resource.name}/Positive${resource.filename}`);
+        const schema = require(`../data/${resource.name}/schema${resource.filename}`);
 
-    sections.map((section) => {
-        const requests = require(`../data/${section.name}/PostPositive${section.filename}`);
-        const schema = require(`../data/${section.name}/schema${section.filename}`);
-
-        requests.map((data) => {
+        testData.map((data) => {
             let response;
-            let id = data.body.id;
+            // const id = data.id;
 
             before(async () => {
-                data.uri = env.uri + data.uri;
-                response = await sendRequest(data);
+                data.id *= ID_MULTIPLIER; // POST body data must have unique id
+                let uri = `${env.uri}/${resource.name}/`;
+                response = await sendRequest(uri, method, data);
             });
 
-            it(`Check response code of ${section.singular} ` + id, () => {
+            after(() => {
+                data.id /= ID_MULTIPLIER;
+            });
+
+            it(`Check response code of ${resource.singular} ` + data.id, () => {
                 expect(response.statusCode).to.eql(codes.created);
             });
 
-            it(`Validate response body of ${section.singular} ` + id, () => {
+            it(`Validate response body of ${resource.singular} ` + data.id, () => {
                 expect(validate(response.body, schema)).to.eql(true);
             });
 
-            it(`Compare recieved data with sent data in ${section.singular} ` + id, () => {
-                expect(response.body).to.eql(data.body);
+            it(`Compare recieved data with sent data in ${resource.singular} ` + data.id, () => {
+                expect(response.body).to.eql(data);
             });
         });
     });

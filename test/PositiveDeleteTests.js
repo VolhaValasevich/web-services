@@ -4,25 +4,26 @@ const sendRequest = require('../lib/sendRequest');
 const env = require('../endpoint/test');
 const codes = require("../data/statusCodes");
 const sections = require("../data/sections");
+const method = 'DELETE';
 
-describe('DELETE Tests', () => {
-    sections.map((section) => {
-        const requests = require(`../data/${section.name}/DeletePositive${section.filename}`);
+describe(method + ' Tests', () => {
+    sections.map((resource) => {
+        const testData = require(`../data/${resource.name}/Positive${resource.filename}`);
 
-        requests.map((data) => {
+        testData.map((data) => {
             let response;
-            let id = parseInt(data.uri.split('/')[2], 10);
+            const id = data.id;
 
             before(async () => {
-                data.uri = env.uri + data.uri;
-                response = await sendRequest(data);
+                let uri = `${env.uri}/${resource.name}/${id}`;
+                response = await sendRequest(uri, method, data);
             });
 
-            it(`Check response code of ${section.singular} ` + id, () => {
+            it(`Check response code of ${resource.singular} ` + id, () => {
                 expect(response.statusCode).to.eql(codes.ok);
             });
 
-            it(`Validate response body of ${section.singular} ` + id, () => {
+            it(`Validate response body of ${resource.singular} ` + id, () => {
                 expect(response.body).to.eql({});
             });
         });
