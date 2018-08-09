@@ -8,5 +8,10 @@
         "name": "posts",
         "filename": "Posts",
         "singular": "post"
+    },
+    {
+        "name": "todos",
+        "filename": "Todos",
+        "singular": "todo"
     }
 ]

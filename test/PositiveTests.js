@@ -13,25 +13,23 @@ const ID_MULTIPLIER = 5001; // the biggest section "Photos" has 5000 entries
 requestTypes.map((request) => { // runs a separate describe for each type of request
 
     describe(`${request.type} Tests`, () => {
-        resources.map((resource) => { // runs tests for different data types (comments, posts, users)
-            logger.info(`Running tests for ${resource.name}`);
+        resources.forEach((resource) => { // runs tests for different data types (comments, posts, users)
             const testData = require(`../data/${resource.name}/Positive${resource.filename}`); // requiring resource test data
             const schema = require(`../data/${resource.name}/schema${resource.filename}`); // requiring resource json schema
 
-            testData.map((data) => { // runs tests for each element in test data
+            testData.forEach((data) => { // runs tests for each element in test data
                 let response;
-                let id = parseInt(data.uri.split('/')[2], 10);
-                const uri = data.uri;
+                const id = data.id; // parseInt(data.uri.split('/')[2], 10);
 
                 before(async () => {
-                    data.uri = env.uri + uri;
-                    data.method = request.type.toUpperCase();
+                    let uri = `${env.uri}/${resource.name}/${id}`;
+                    const method = request.type.toUpperCase();
                     if (request.type === POST) {
-                        data.uri = data.uri.slice(0, -1); // POST requests need to be sent to the common uri
-                        data.body.id *= ID_MULTIPLIER; // POST body data must have unique id
+                        uri = uri.slice(0, -1); // POST requests need to be sent to the common uri
+                        data.id *= ID_MULTIPLIER; // POST body data must have unique id
                     }
-                    logger.action('Sending request to ' + data.uri);
-                    response = await sendRequest(data);
+                    logger.action('Sending request to ' + uri);
+                    response = await sendRequest(uri, method, data);
                 });
 
                 it(`Check response code of ${resource.singular} ` + id, () => {
@@ -57,7 +55,7 @@ requestTypes.map((request) => { // runs a separate describe for each type of req
                 if (request.bodyIsRequired) {
                     it(`Compare recieved data with sent data in ${resource.singular} ` + id, () => {
                         logger.check(`Comparing recieved data with sent data in ${resource.singular} ` + id);
-                        expect(response.body).to.eql(data.body);
+                        expect(response.body).to.eql(data);
                     });
                 }
 
