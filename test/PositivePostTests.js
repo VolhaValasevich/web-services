@@ -4,12 +4,12 @@ const sendRequest = require('../lib/sendRequest');
 const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
 const codes = require("../data/statusCodes");
-const sections = require("../data/sections");
+const resources = require("../data/resources");
 const method = 'POST';
 const ID_MULTIPLIER = 5001; // the biggest section "Photos" has 5000 entries
 
 describe(method + ' Tests', () => {
-    sections.map((resource) => {
+    resources.map((resource) => {
         const testData = require(`../data/${resource.name}/Positive${resource.filename}`);
         const schema = require(`../data/${resource.name}/schema${resource.filename}`);
 

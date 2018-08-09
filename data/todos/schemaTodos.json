@@ -1,5 +1,5 @@
 {
-    "id": "/Post",
+    "id": "/Todo",
     "type": "object",
     "properties": {
         "userId": {
@@ -11,11 +11,11 @@
         "title": {
             "type": "string"
         },
-        "body": {
-            "type": "string"
+        "completed": {
+            "type": "boolean"
         }
     },
     "required": [
-        "userId", "id", "title", "body"
+        "userId", "id", "title", "completed"
     ]
 }
