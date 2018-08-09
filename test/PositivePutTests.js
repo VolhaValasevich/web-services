@@ -28,12 +28,13 @@ describe(method + ' Tests', () => {
                 expect(response.statusCode).to.eql(codes.ok);
             });
 
-            it(`Validate response body of ${resource.singular} ` + id, () => {
+            it(`Checking response body of ${resource.singular} ` + id, () => {
+                logger.check(`Checking response body of ${resource.singular} ` + id);
                 expect(validate(response.body, schema)).to.eql(true);
             });
 
             it(`Compare recieved data with sent data in ${resource.singular} ` + id, () => {
-                logger.check(`Checking response body of ${resource.singular} ` + id);
+                logger.check(`Comparing recieved data with sent data in ${resource.singular} ` + id);
                 expect(response.body).to.eql(dataPut);
             });
         });
