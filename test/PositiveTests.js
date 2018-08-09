@@ -35,6 +35,10 @@ requestTypes.map((request) => { // runs a separate describe for each type of req
                     expect(response.statusCode).to.eql(request.codeSuccess);
                 });
 
+                it(`Check response message of ${resource.singular} ` + id, () => {
+                    expect(response.statusMessage).to.eql(request.messageSuccess);
+                });
+
                 it(`Validate response body of ${resource.singular} ` + id, () => {
                     if (request.type === DELETE) {
                         expect(response.body).to.eql({});

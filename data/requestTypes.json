@@ -2,21 +2,25 @@
     {
         "type": "Get",
         "bodyIsRequired": false,
-        "codeSuccess": 200
+        "codeSuccess": 200,
+        "messageSuccess": "OK"
     },
     {
         "type": "Put",
         "bodyIsRequired": true,
-        "codeSuccess": 200
+        "codeSuccess": 200,
+        "messageSuccess": "OK"
     },
     {
         "type": "Post",
         "bodyIsRequired": true,
-        "codeSuccess": 201
+        "codeSuccess": 201,
+        "messageSuccess": "Created"
     },
     {
         "type": "Delete",
         "bodyIsRequired": false,
-        "codeSuccess": 200
+        "codeSuccess": 200,
+        "messageSuccess": "OK"
     }
 ]
