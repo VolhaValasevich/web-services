@@ -1,6 +1,22 @@
 {
-    "ok": 200,
-    "created": 201,
-    "notFound": 404,
-    "internalError": 500
+    "ok": {
+        "code": 200,
+        "message": "OK"
+    },
+    "created": {
+        "code": 201,
+        "message": "Created"
+    },
+    "notFound": {
+        "code": 404,
+        "message": "Not Found"
+    },
+    "internalServerError": {
+        "code": 500,
+        "message": "Internal Server Error"
+    },
+    "badRequest": {
+        "code": 400,
+        "message": "Bad Request"
+    }
 }

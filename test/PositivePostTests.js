@@ -30,17 +30,18 @@ describe(method + ' Tests', () => {
             });
 
             it(`Check response code of ${resource.singular} ` + id, () => {
-                logger.check(`Checking response code of ${resource.singular} ` + id);
-                expect(response.statusCode).to.eql(codes.created);
+                expect(response.statusCode).to.eql(codes.created.code);
+            });
+
+            it(`Check response message of ${resource.singular} ` + id, () => {
+                expect(response.statusMessage).to.eql(codes.created.message);
             });
 
             it(`Check response body of ${resource.singular} ` + id, () => {
-                logger.check(`Checking response body of ${resource.singular} ` + id);
                 expect(validate(response.body, schema)).to.eql(true);
             });
 
             it(`Compare recieved data with sent data in ${resource.singular} ` + id, () => {
-                logger.check(`Comparing recieved data with sent data in ${resource.singular} ` + id);
                 expect(response.body).to.eql(data);
             });
         });

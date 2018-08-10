@@ -24,12 +24,14 @@ describe(method + ' Tests', () => {
             });
 
             it(`Check response code of ${resource.singular} ` + id, () => {
-                logger.check(`Checking response code of ${resource.singular} ` + id);
-                expect(response.statusCode).to.eql(codes.ok);
+                expect(response.statusCode).to.eql(codes.ok.code);
+            });
+
+            it(`Check response message of ${resource.singular} ` + id, () => {
+                expect(response.statusMessage).to.eql(codes.ok.message);
             });
 
             it(`Validate response body of ${resource.singular} ` + id, () => {
-                logger.check(`Checking response body of ${resource.singular} ` + id);
                 expect(validate(response.body, schema)).to.eql(true);
             });
         });
