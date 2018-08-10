@@ -2,16 +2,19 @@
     {
         "name": "comments",
         "filename": "Comments",
-        "singular": "comment"
+        "singular": "comment",
+        "uri": "/comments"
     },
     {
         "name": "posts",
         "filename": "Posts",
-        "singular": "post"
+        "singular": "post",
+        "uri": "/posts"
     },
     {
         "name": "todos",
         "filename": "Todos",
-        "singular": "todo"
+        "singular": "todo",
+        "uri": "/todos"
     }
 ]
