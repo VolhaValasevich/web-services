@@ -1,0 +1,17 @@
+[
+    {
+        "info": "missing parameters",
+        "body": {
+            "userId": 1,
+            "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        }
+    },
+    {
+        "info": "incorrect parameters type",
+        "body": {
+            "userId": "1",
+            "title": 1,
+            "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+        }
+    }
+]

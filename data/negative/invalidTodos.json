@@ -1,0 +1,17 @@
+[
+    {
+        "info": "missing parameters",
+        "body": {
+            "title": "delectus aut autem",
+            "completed": false
+        }
+    },
+    {
+        "info": "invalid parameters types",
+        "body": {
+            "userId": "string",
+            "title": "delectus aut autem",
+            "completed": "false"
+        }
+    }
+]
