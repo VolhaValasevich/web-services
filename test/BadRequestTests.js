@@ -8,21 +8,18 @@ const testData = require(`../data/negative/badRequest`);
 describe('Bad Request Tests', () => {
     testData.forEach((data) => {
         const uri = env.uri;
+        let response;
+
+        before(async () => {
+            response = await sendRequest(uri, data.method, data);
+        });
 
         it(`should return correct error code after sending ${data.method} request to ${uri}`, async () => {
-            try {
-                await sendRequest(uri, data.method, data);
-            } catch (err) {
-                expect(err.response.statusCode).to.eql(codes.badRequest.code);
-            }
+            expect(response.statusCode).to.eql(codes.badRequest.code);
         });
 
         it(`should return correct error message after sending ${data.method} request to ${uri}`, async () => {
-            try {
-                await sendRequest(uri, data.method, data);
-            } catch (err) {
-                expect(err.response.statusMessage).to.eql(codes.badRequest.message);
-            }
+            expect(response.statusMessage).to.eql(codes.badRequest.message);
         });
 
     });

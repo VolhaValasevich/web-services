@@ -11,22 +11,20 @@ describe('Wrong Uri Tests', () => {
         describe(resource.filename, () => {
             testData.forEach((data) => {
                 data.uri.forEach((dataUri) => {
+
                     const uri = env.uri + resource.uri + dataUri;
+                    let response;
+
+                    before(async () => {
+                        response = await sendRequest(uri, data.method, data);
+                    });
 
                     it(`should return correct error code after sending ${data.method} request to ${uri}`, async () => {
-                        try {
-                            await sendRequest(uri, data.method, data);
-                        } catch (err) {
-                            expect(err.response.statusCode).to.eql(codes.notFound.code);
-                        }
+                        expect(response.statusCode).to.eql(codes.notFound.code);
                     });
 
                     it(`should return correct error message after sending ${data.method} request to ${uri}`, async () => {
-                        try {
-                            await sendRequest(uri, data.method, data);
-                        } catch (err) {
-                            expect(err.response.statusMessage).to.eql(codes.notFound.message);
-                        }
+                        expect(response.statusMessage).to.eql(codes.notFound.message);
                     });
 
                 });
