@@ -9,7 +9,7 @@ const method = 'DELETE';
 
 describe(method + ' Tests', () => {
     resources.map((resource) => {
-        const testData = require(`../data/${resource.name}/Positive${resource.filename}`);
+        const testData = require(`../data/positive/Positive${resource.filename}`);
         describe(resource.filename, () => {
             testData.map((data) => {
                 let response;

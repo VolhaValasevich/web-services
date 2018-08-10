@@ -10,8 +10,8 @@ const method = 'GET';
 
 describe(method + ' Tests', () => {
     resources.map((resource) => {
-        const testData = require(`../data/${resource.name}/Positive${resource.filename}`);
-        const schema = require(`../data/${resource.name}/schema${resource.filename}`);
+        const testData = require(`../data/positive/Positive${resource.filename}`);
+        const schema = require(`../data/schemas/schema${resource.filename}`);
         describe(resource.filename, () => {
             testData.map((data) => {
                 let response;
