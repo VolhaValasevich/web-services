@@ -5,7 +5,6 @@ const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
 const codes = require("../data/statusCodes");
 const resources = require("../data/resources");
-const logger = require("../lib/logger.js").logger;
 const method = 'POST';
 const ID_MULTIPLIER = 5001; // the biggest section "Photos" has 5000 entries
 
@@ -21,7 +20,6 @@ describe(method + ' Tests', () => {
                 before(async () => {
                     data.id *= ID_MULTIPLIER; // POST body data must have unique id
                     let uri = `${env.uri}/${resource.name}/`;
-                    logger.action('Sending request to ' + uri);
                     response = await sendRequest(uri, method, data);
                 });
 

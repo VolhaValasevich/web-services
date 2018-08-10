@@ -5,7 +5,6 @@ const env = require('../endpoint/test');
 const validate = require("../lib/validateSchema.js");
 const codes = require("../data/statusCodes");
 const resources = require("../data/resources");
-const logger = require("../lib/logger.js").logger;
 const method = 'PUT';
 
 describe(method + ' Tests', () => {
@@ -19,7 +18,6 @@ describe(method + ' Tests', () => {
 
                 before(async () => {
                     let uri = `${env.uri}/${resource.name}/${id}`;
-                    logger.action('Sending request to ' + uri);
                     response = await sendRequest(uri, method, dataPut);
                 });
 
