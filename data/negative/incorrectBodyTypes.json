@@ -1,0 +1,23 @@
+[
+    {
+        "info": "empty body",
+        "body": {}
+    },
+    {
+        "info": "string",
+        "body": ""
+    },
+    {
+        "info": "array",
+        "body": []
+    },
+    {
+        "info": "xml",
+        "body": "<?xml version='1.0' encoding='UTF-8' standalone='yes'?><body>data</body>"
+    },
+    {
+        "info": "null",
+        "body": null
+    }
+
+]
