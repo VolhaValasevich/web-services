@@ -22,7 +22,7 @@ describe('Incorrect Body Type Tests', () => {
                     expect(response.statusCode).to.eql(codes.internalServerError.code);
                 });
 
-                it(`should return correct error message after sending ${type.info} request to ${uri}`, async () => {
+                it(`should return correct error message after sending ${type.info} to ${uri}`, async () => {
                     expect(response.statusMessage).to.eql(codes.internalServerError.message);
                 });
 
