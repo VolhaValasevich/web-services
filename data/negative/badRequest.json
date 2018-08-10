@@ -1,0 +1,20 @@
+[
+    {
+        "method": "VIEW"
+    },
+    {
+        "method": "COPY"
+    },
+    {
+        "method": "LINK"
+    },
+    {
+        "method": "UNLINK"
+    },
+    {
+        "method": "LOCK"
+    },
+    {
+        "method": "UNLOCK"
+    }
+]
