@@ -19,11 +19,11 @@ describe('Incorrect Body Type Tests', () => {
                 });
 
                 it(`should return correct error code after sending ${type.info} to ${uri}`, async () => {
-                    expect(response.statusCode).to.eql(codes.internalServerError.code);
+                    expect(response.statusCode).to.eql(codes.badRequest.code);
                 });
 
                 it(`should return correct error message after sending ${type.info} to ${uri}`, async () => {
-                    expect(response.statusMessage).to.eql(codes.internalServerError.message);
+                    expect(response.statusMessage).to.eql(codes.badRequest.message);
                 });
 
             });
