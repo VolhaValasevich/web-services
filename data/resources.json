@@ -16,5 +16,23 @@
         "filename": "Todos",
         "singular": "todo",
         "uri": "/todos"
+    },
+    {
+        "name": "albums",
+        "filename": "Albums",
+        "singular": "album",
+        "uri": "/albums"
+    },
+    {
+        "name": "photos",
+        "filename": "Photos",
+        "singular": "photo",
+        "uri": "/photos"
+    },
+    {
+        "name": "users",
+        "filename": "Users",
+        "singular": "user",
+        "uri": "/users"
     }
 ]

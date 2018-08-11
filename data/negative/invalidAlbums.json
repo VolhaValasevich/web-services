@@ -1,0 +1,15 @@
+[
+    {
+        "info": "missing parameters",
+        "body": {
+            "title": "quidem molestiae enim"
+          }
+    },
+    {
+        "info": "incorrect parameter types",
+        "body": {
+            "userId": "string",
+            "title": 1
+          }
+    }
+]

@@ -1,0 +1,19 @@
+[
+    {
+        "info": "missing parameters",
+        "body": {
+            "title": "accusamus beatae ad facilis cum similique qui sunt",
+            "url": "http://placehold.it/600/92c952",
+            "thumbnailUrl": "http://placehold.it/150/92c952"
+          }
+    },
+    {
+        "info": "incorrect parameter types",
+        "body": {
+            "albumId": "string",
+            "title": 1,
+            "url": "http://placehold.it/600/92c952",
+            "thumbnailUrl": "http://placehold.it/150/92c952"
+          }
+    }
+]

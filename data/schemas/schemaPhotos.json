@@ -1,0 +1,26 @@
+{
+    "id": "/Photo",
+    "type": "object",
+    "properties": {
+        "albumId": {
+            "type": "number"
+        },
+        "id": {
+            "type": "number"
+        },
+        "title": {
+            "type": "string"
+        },
+        "url": {
+            "type": "string",
+            "pattern": "^http:\/\/\\w+\\.[^\\s]*"
+        },
+        "thumbnailUrl": {
+            "type": "string",
+            "pattern": "^http:\/\/\\w+\\.[^\\s]*"
+        }
+    },
+    "required": [
+        "albumId", "id", "title", "url", "thumbnailUrl"
+    ]
+}

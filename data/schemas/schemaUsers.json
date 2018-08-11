@@ -1,0 +1,109 @@
+{
+    "id": "/User",
+    "definitions": {
+        "address": {
+            "definitions": {
+                "geo": {
+                    "type": "object",
+                    "properties": {
+                        "lat": {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+\\.[0-9]{4}$"
+                        },
+                        "lng": {
+                            "type": "string",
+                            "pattern": "^-?[0-9]+\\.[0-9]{4}$"
+                        }
+                    },
+                    "required": [
+                        "lat",
+                        "lng"
+                    ]
+                }
+            },
+            "type": "object",
+            "properties": {
+                "street": {
+                    "type": "string"
+                },
+                "suite": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "zipcode": {
+                    "type": "string",
+                    "pattern": "^[0-9]{5}-[0-9]{4}$"
+                },
+                "geo": {
+                    "$ref": "#/definitions/address/definitions/geo"
+                }
+            },
+            "required": [
+                "street",
+                "suite",
+                "city",
+                "zipcode",
+                "geo"
+            ]
+        },
+        "company": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "catchPhrase": {
+                    "type": "string"
+                },
+                "bs": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "catchPhrase",
+                "bs"
+            ]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "number"
+        },
+        "name": {
+            "type": "string"
+        },
+        "username": {
+            "type": "string"
+        },
+        "email": {
+            "type": "string",
+            "pattern": "\\w+@\\w+.\\w{1,5}"
+        },
+        "address": {
+            "$ref":"#/definitions/address"
+        },
+        "phone": {
+            "type": "string"
+        },
+        "website": {
+            "type": "string"
+        },
+        "company": {
+            "$ref":"#/definitions/company"
+        }
+    },
+    "required": [
+        "id",
+        "name",
+        "username",
+        "email",
+        "address",
+        "phone",
+        "website",
+        "company"
+    ]
+}
